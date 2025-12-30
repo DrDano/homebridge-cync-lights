@@ -1,7 +1,7 @@
 {
   "displayName": "Homebridge Cync Lights",
   "name": "homebridge-cync-lights",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Support for Cync Direct Connect lights by GE.",
   "license": "Apache-2.0",
   "type": "module",
@@ -17,6 +17,14 @@
     "homebridge": "^1.8.0 || >=2.0.0-beta.0"
   },
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "config.schema.json",
+    "homebridge-ui"
+  ],
   "scripts": {
     "lint": "eslint src/**.ts --max-warnings=0",
     "watch": "npm run build && npm link && nodemon",
