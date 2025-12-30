@@ -19,8 +19,8 @@ import {CyncApi, CyncDevice, CyncHome} from './api.js';
  * parse the user config and discover/register accessories with Homebridge.
  */
 export class CyncLightsPlatform implements DynamicPlatformPlugin {
-  public readonly Service: typeof Service = this.api.hap.Service;
-  public readonly Characteristic: typeof Characteristic = this.api.hap.Characteristic;
+  public readonly Service: typeof Service;
+  public readonly Characteristic: typeof Characteristic;
 
   // this is used to track restored cached accessories
   public readonly accessories: PlatformAccessory[] = [];
@@ -34,6 +34,8 @@ export class CyncLightsPlatform implements DynamicPlatformPlugin {
     public readonly config: PlatformConfig,
     public readonly api: API,
   ) {
+    this.Service = this.api.hap.Service;
+    this.Characteristic = this.api.hap.Characteristic;
 
     this.api.on('didFinishLaunching', () => {
       // connect to server
